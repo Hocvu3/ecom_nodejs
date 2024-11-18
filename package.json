@@ -1,0 +1,11 @@
+{
+  "name": "ecommerce_nodejs",
+  "version": "1.0.0",
+  "description": "ecommerce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hocvu",
+  "license": "ISC"
+}
