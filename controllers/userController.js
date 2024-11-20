@@ -20,6 +20,16 @@ exports.getUser = async (req, res) => {
         }
     })
 };
+//Create user
+exports.createUser = async (req, res) => {
+    const newUser = await User.create(req.body);
+    res.status(201).json({
+        status: 'success',
+        data: {
+            newUser
+        }
+    })
+};
 //Update user
 exports.updateUser = async (req, res) =>{
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
