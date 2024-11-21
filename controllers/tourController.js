@@ -1,18 +1,20 @@
 const express = require('express');
 const Tour = require('../models/tourModel');
+const APIFeatures = require('../utils/apiFeatures');
 exports.getAllTours = async (req, res) => {
-    await Tour.find()
-        .then(tours => res.status(200).json({
-            status: 'success',
-            results: tours.length,
-            data: {
-                tours
-            }
-        }))
-        .catch(err => res.status(404).json({
-            status: 'fail',
-            message: err
-        }))
+    const features = new APIFeatures(Tour.find(), req.query)
+        .filtering()
+        .sorting()
+        .fieldLimiting()
+        .pagination();
+    const tours = await features.query;
+    res.status(200).json({
+        status: 'success',
+        results: tours.length,
+        data: {
+            tours
+        }
+    })
 };
 //Find one tour base on id
 exports.getTour = async (req, res) => {

@@ -9,11 +9,11 @@ router.get('/logout', authController.logout);
 
 router.route('/')
     .get(userController.getAllUsers)
-    .post(userController.createUser);
+    .post(authController.protect, authController.restrictTo('admin', 'lead-guide', 'guide', 'user'), userController.createUser);
 
 router.route('/:id')
     .get(userController.getUser)
-    .patch(userController.updateUser)    
-    .delete(userController.deleteUser);
+    .patch(authController.protect, authController.restrictTo('admin', 'lead-guide', 'guide', 'user'), userController.updateUser)    
+    .delete(authController.protect, authController.restrictTo('admin', 'lead-guide', 'guide'), userController.deleteUser);
 
 module.exports = router;
