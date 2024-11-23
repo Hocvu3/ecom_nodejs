@@ -7,7 +7,9 @@
     "start": "nodemon server.js",
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon server.js",
     "prod": "SET NODE_ENV=PRODUCTION& nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "hocvu",
   "license": "ISC",
@@ -19,12 +21,16 @@
     "express": "^4.21.1",
     "ffs": "^0.1.2",
     "fs": "^0.0.1-security",
+    "html-to-text": "^9.0.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.2",
+    "nodemailer": "^6.9.16",
+    "pug": "^3.0.3",
     "slugify": "^1.6.6",
     "validator": "^13.12.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "parcel": "^2.13.0"
   }
 }

@@ -63,5 +63,12 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
     return false;
 }
 
+userSchema.methods.createPasswordResetToken = function() {
+    const resetToken = bcrypt.hashSync(Math.random().toString(), 12);
+    this.passwordResetToken = resetToken;
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+    return resetToken;
+};
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;
