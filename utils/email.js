@@ -32,23 +32,22 @@ module.exports = class {
     }
 
     async send(template, subject) {
-        console.log('hi2');
-
-        // const html = pug.renderFile(
-        //     `${__dirname}/../views/email/${template}.pug`,
-        //     {
-        //     firstName: this.firstName,
-        //     url: this.url,
-        //     subject
-        // });
-        console.log('hi');
+        const html = pug.renderFile(
+            `${__dirname}/../views/${template}.pug`,
+            {
+                firstName: this.firstName,
+                url: this.url,
+                subject,
+            }
+        );
+        console.log(html);
         const mailOptions = {
             from: this.from,
             to: this.to,
             subject,
             // html,
-            // text: htmlToText.fromString(html)
-        }
+            // text: htmlToText.fromString(html),
+        };
         await this.newTransport().sendMail(mailOptions);
     }
 
