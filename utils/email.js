@@ -9,7 +9,6 @@ module.exports = class {
         this.url = url;
         this.from = `Hoc Vu <${process.env.EMAIL_FROM}>`;
     }
-
     newTransport() {
         if(process.env.NODE_ENV === 'production') {
             return nodemailer.createTransport({
@@ -20,7 +19,6 @@ module.exports = class {
                 }
             });
         }
-
         return nodemailer.createTransport({
             host: process.env.SMTP_HOST,
             port: process.env.SMTP_PORT,
@@ -30,7 +28,6 @@ module.exports = class {
             }
         });
     }
-
     async send(template, subject) {
         const html = pug.renderFile(
             `${__dirname}/../views/${template}.pug`,
@@ -40,7 +37,6 @@ module.exports = class {
                 subject,
             }
         );
-        console.log(html);
         const mailOptions = {
             from: this.from,
             to: this.to,
