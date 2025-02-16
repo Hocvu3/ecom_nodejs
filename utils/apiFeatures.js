@@ -11,6 +11,7 @@ class APIfeatures {
         let queryStr = JSON.stringify(queryObj);
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
         this.query = this.query.find(JSON.parse(queryStr));
+        //hi xin chao day la san pham tets
         return this;
     }
 
