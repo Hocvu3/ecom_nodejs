@@ -14,3 +14,4 @@ router.post('/mo-mo/checkout-session/:tourId', bookingController.getMoMoCheckout
 router.post('/za_lo-pay/checkout-session/:tourId', bookingController.getZa_loCheckoutSession);
 
 module.exports = router;
+//test tinh nang template
