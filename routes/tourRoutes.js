@@ -15,3 +15,5 @@ router.route('/:id')
     .delete(authController.restrictTo('admin', 'lead-guide'), tourController.deleteTour);
 
 module.exports = router;
+
+///test tinh nang template again
