@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
         console.log('A user disconnected');
       });
 });
-
+//added other middlewares
 //limiter
 const limiter = rateLimit({
     max: 100,
